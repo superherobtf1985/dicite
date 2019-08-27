@@ -34,8 +34,6 @@ Rails.application.routes.draw do
     end
   end
 
-
-
   namespace :admin do
     resources :users, only: [:index, :edit, :update, :destroy]
     resources :contacts, only: [:index, :show, :update]
