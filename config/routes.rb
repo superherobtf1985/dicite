@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations'
+  }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope module: :end_user do
-    #   後で下を追加
-    #devise_for :users
     resources :users, only: [:show, :update] do
       member do
         get :unsubscribe
@@ -27,10 +37,9 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    #   後で下を追加
-    #devise_for :users
     resources :users, only: [:index, :edit, :update, :destroy]
     resources :contacts, only: [:index, :show, :update]
+
     resources :items, only: [:index, :create, :edit, :update, :destroy] do
       resources :reviews, only: [:update, :destroy]
     end
