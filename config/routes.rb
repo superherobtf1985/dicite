@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :edit, :update, :destroy]
     resources :contacts, only: [:index, :show, :update]
-
+    resources :orders, only: [:index, :show, :update]
     resources :items, only: [:index, :create, :edit, :update, :destroy] do
       resources :reviews, only: [:update, :destroy]
     end
