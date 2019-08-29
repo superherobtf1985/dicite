@@ -5,12 +5,54 @@
         <a class="navbar-brand" href="#">dicite</a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Guest</a></li>
-        <li><a href="#">items_index</a></li>
-        <li><a href="#">Mypage</a></li>
-        <li><a href="#">cart</a></li>
-        <li><a href="#">contacts</a></li>
-        <li><a href="#">logout</a></li>
+        <div class="nav">
+          <% if user_signed_in? %>
+            <li><%= current_user %></li>
+            <li>
+              <%= link_to "商品一覧", items_path %>
+            </li>
+            <li>
+              <%= link_to "マイページ", users_path %>
+            </li>
+            <li>
+              <%= link_to "カート", carts_path %>
+            </li>
+            <li>
+              <%= link_to "お問い合わせ", new_contact_path %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li><span>管理者</span></li>
+            <li>
+              <%= link_to "ユーザー一覧", admin_users_path %>
+            </li>
+            <li>
+              <%= link_to "商品一覧", admin_items_path %>
+            </li>
+            <li>
+              <%= link_to "お問い合わせ", admin_contacts_path %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li><span>Guest</span></li>
+            <li>
+              <%= link_to "商品一覧", items_path %>
+            </li>
+            <li>
+              <%= link_to "マイページ", users_path %>
+            </li>
+            <li>
+              <%= link_to "カート", carts_path %>
+            </li>
+            <li>
+              <%= link_to "お問い合わせ", new_contact_path %>
+            </li>
+          <% end %>
+        </div>
       </ul>
     </div>
   </nav>
