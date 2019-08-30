@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :edit, :update, :destroy]
     resources :contacts, only: [:index, :show, :update]
     resources :orders, only: [:index, :show, :update]
-    resources :items, only: [:index, :create, :edit, :update, :destroy, :new] do
+    resources :items, only: [:index, :create, :show, :update, :destroy, :new] do
       resources :reviews, only: [:update, :destroy]
     end
   end

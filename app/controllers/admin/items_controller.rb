@@ -16,10 +16,17 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
-  def edit
+  def show
+    @item = Item.find(params[:id])
   end
 
   def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to admin_items_path
+    else
+      render :show
+    end
   end
 
   def destroy
@@ -27,6 +34,6 @@ class Admin::ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:jacket_image, :name, :price, :stock, :status, :release_date, :artist_id, :label_id, :genre_id)
+    params.require(:item).permit(:jacket_image, :name, :price, :stock, :status, :release_date, :artist_id, :label_id, :genre_id, cds_attributes: [:id, :number, :_destroy, songs_attributes: [:id, :name, :_destroy]])
   end
 end
