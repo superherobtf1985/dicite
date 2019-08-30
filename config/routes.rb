@@ -43,4 +43,9 @@ Rails.application.routes.draw do
     end
   end
 
+  constraints -> request { request.session[:admin_id].present? } do
+    root 'admin/items#index'
+  end
+
+  root 'end_user/items#index'
 end
