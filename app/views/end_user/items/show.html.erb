@@ -3,6 +3,10 @@
 <div class="row">
   <div class="col-xs-4">
     <%= attachment_image_tag @item, :jacket_image, :fill, 150, 150, fallback: "/images/no_image.jpg" %>
+
+    <div id="favorites_buttons_<%= @item.id %>">
+      <%= render 'end_user/favorites/favorite', item: @item %>
+    </div>
   </div>
 
   <div class="col-xs-8">

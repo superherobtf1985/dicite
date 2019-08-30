@@ -1,0 +1,11 @@
+<% if item.favorited_by?(current_user) %>
+  <%= link_to favorites_path(item),  method: :delete, remote: true do %>
+    <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+    <%= item.favorites.count %> いいね
+  <% end %>
+<% else %>
+  <%= link_to favorites_path(item), method: :post, remote: true do %>
+    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+    <%= item.favorites.count %> いいね
+  <% end %>
+<% end %>
