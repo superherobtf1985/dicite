@@ -1,40 +1,5 @@
 <h3>管理者商品詳細</h3>
 
 <div class="row">
-  <div class="col-xs-4">
-    <%= attachment_image_tag @item, :jacket_image, :fill, 150, 150, fallback: "/images/no_image.jpg" %>
-  </div>
-
-  <div class="col-xs-8">
-    <table class="col-xs-12">
-      <tr>
-        <td>商品名：</td>
-        <td><%= link_to @item.name, item_path(@item) %></td>
-      </tr>
-      <tr>
-        <td>アーティスト名：</td>
-        <td><%= @item.artist.name %></td>
-      </tr>
-      <tr>
-        <td>値段：</td>
-        <td><%= @item.price %></td>
-      </tr>
-      <tr>
-        <td>ジャンル名：</td>
-        <td><%= @item.genre.name %></td>
-      </tr>
-      <tr>
-        <td>レーベル名：</td>
-        <td><%= @item.label.name %></td>
-      </tr>
-      <tr>
-        <td>在庫数：</td>
-        <td><%= @item.stock %></td>
-      </tr>
-      <tr>
-        <td>ステータス：</td>
-        <td></td>
-      </tr>
-    </table>
-  </div>
+  <%= render 'form', item: @item %>
 </div>

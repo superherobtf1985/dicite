@@ -1,0 +1,14 @@
+<div class="nested-fields">
+  CD番号<%= f.number_field :number, min: 1 %>
+  <%= link_to_remove_association "削除", f %>
+
+  <div class="songs">
+    <%= f.fields_for :songs do |song| %>
+      <%= render 'song_fields', f: song %>
+    <% end %>
+
+    <div class="links">
+      <%= link_to_add_association "曲を追加する", f, :songs %>
+    </div>
+  </div>
+</div>
