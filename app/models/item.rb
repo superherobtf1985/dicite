@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   belongs_to :label
   has_many :cds
   has_many :favorites
+  has_many :reviews
   attachment :jacket_image
   accepts_nested_attributes_for :cds, allow_destroy: true
 
