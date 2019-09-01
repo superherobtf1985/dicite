@@ -1,0 +1,19 @@
+<%= link_to 'レジに進む', class: "btn btn-lg btn-base-1" %>
+
+<h3>合計
+  <% sum_price = 0 %>
+  <% @carts.each do |cart| %>
+    <% sum_price += cart.item.price %>
+
+    <div class="cart-items">
+      <%= attachment_image_tag cart.item, :jacket_image, :fill, 50, 50, fallback: "/images/no_image.jpg" %>
+      <%= cart.item.artist.name %>
+      <%= cart.item.cds.name %>
+      <%= link_to cart.item.name, "/items/#{cart.item.id}" %>
+      <%= cart.count %>個
+      <%= link_to "削除", cart_path(cart.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger" %>
+    </div>
+  <% end %>
+
+  <%= sum_price %>円
+</h3>
