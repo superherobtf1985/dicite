@@ -1,17 +1,16 @@
 <h2><%= @item.reviews.count %>件のレビュー</h2>
 <table class="table">
   <% @item.reviews.each do |review| %>
-  <tr>
-    <td>
-      <%= review.user.last_name + review.user.first_name %>
-    </td>
-    <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
-    <td><%= review.comment %></td>
-   <% if admin_signed_in? %>
-    <td><%= link_to 'Edit', item_path(id: @item, comment_id: review), class: "btn-sm btn-success" %></td>
-    <td><%= link_to 'Destroy', "admin/items/#{@item.id}/reviews/#{review.id}", method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger"%></td>
-   <% end %>
-  </tr>
+    <tr>
+      <td>
+        <%= review.user.last_name + review.user.first_name %>
+      </td>
+      <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= review.comment %></td>
+     <% if admin_signed_in? %>
+      <td><%= link_to 'Destroy', "/admin/items/#{@item.id}/reviews/#{review.id}", method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger"%></td>
+     <% end %>
+    </tr>
   <% end %>
 </table>
 
