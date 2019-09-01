@@ -27,7 +27,7 @@ Rails.application.routes.draw do
         resource :reviews, only: [:create, :destroy]
       end
     end
-    resources :carts, only: [:show, :create]
+    resources :carts, only: [:show, :create, :destroy]
     resources :payments, only: [:new, :create] do
       get "confirm", on: :member
       get "complete", on: :collection
