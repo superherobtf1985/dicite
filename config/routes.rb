@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations'
+  }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope module: :end_user do
-    #   後で下を追加
-    #devise_for :users
     resources :users, only: [:show, :update] do
       member do
         get :unsubscribe
@@ -17,23 +27,25 @@ Rails.application.routes.draw do
         resource :reviews, only: [:create, :destroy]
       end
     end
-    resources :carts, only: [:show, :create]
+    resources :carts, only: [:show, :create, :destroy]
     resources :payments, only: [:new, :create] do
       get "confirm", on: :member
       get "complete", on: :collection
     end
   end
 
-
-
   namespace :admin do
-    #   後で下を追加
-    #devise_for :users
     resources :users, only: [:index, :edit, :update, :destroy]
     resources :contacts, only: [:index, :show, :update]
-    resources :items, only: [:index, :create, :edit, :update, :destroy] do
+    resources :orders, only: [:index, :show, :update]
+    resources :items, only: [:index, :create, :show, :update, :destroy, :new] do
       resources :reviews, only: [:update, :destroy]
     end
   end
 
+  constraints -> request { request.session[:admin_id].present? } do
+    root 'admin/items#index'
+  end
+
+  root 'end_user/items#index'
 end
