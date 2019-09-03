@@ -13,5 +13,19 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";  /*ここを追加*/
- @import "bootstrap";            /*ここを追加*/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  margin-top: 50px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
