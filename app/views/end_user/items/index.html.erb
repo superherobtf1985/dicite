@@ -1,0 +1,6 @@
+<li><%= link_to ' logout', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
+
+<h3>商品一覧</h3>
+<div class="row">
+  <%= render 'layouts/items', items: @items %>
+</div>
