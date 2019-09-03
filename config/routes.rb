@@ -28,9 +28,10 @@ Rails.application.routes.draw do
       end
     end
     resources :carts, only: [:show, :create, :destroy]
-    resources :payments, only: [:new, :create] do
-      get "confirm", on: :member
-      get "complete", on: :collection
+    resource :payments, only: [:new] do
+      post "confirm", on: :member
+      post "create_shipping", on: :member
+      post "complete", on: :collection
     end
   end
 

@@ -1,0 +1,27 @@
+<h2>決済画面</h2>
+
+<% sum_price = 0 %>
+
+<% @carts.each do |cart| %>
+  <% sum_price += (cart.item.price * cart.count) %>
+<% end %>
+
+<p>合計<%= sum_price %>円</p>
+<p>総計<%= sum_price + 500 %>円</p>
+
+<div class="order-form">
+  <%= form_for Order.new, url: "/payments/confirm" do |f| %>
+    <div class="how-to-pay">
+      <h3>支払い方法</h3>
+      <%= f.select :how_to_pay, Order.how_to_pays.keys %>
+    </div>
+
+    <div class="shipping">
+        <%= f.select :shipping_id, current_user.shippings.collect { |p| [ p.last_name + p.first_name + "：" + p.prefecture + p.city + p.building, p.id ] }, {:prompt => "配送先を選択"} %>
+    </div>
+
+    <%= f.submit "購入を確定する", class: "btn btn-default button-left" %>
+  <% end %>
+</div>
+
+<%= render '/end_user/new_shipping_form' %>

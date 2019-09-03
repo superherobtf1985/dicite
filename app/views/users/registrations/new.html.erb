@@ -25,6 +25,11 @@
       <%= f.text_field :building, autofocus: true, placeholder: '番地・建物', class: "address" %>
   </div>
 
+  <label>電話番号</label>
+  <div class="field">
+      <%= f.text_field :phone, autofocus: true, placeholder: '電話番号', class: "phone" %>
+  </div>
+
   <label>メールアドレス</label>
   <div class="field">
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
