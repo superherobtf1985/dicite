@@ -6,7 +6,7 @@ class EndUser::CartsController < ApplicationController
 
     if cart.item.stock >= cart.count
       cart.save
-      redirect_to cart_path(cart.id)
+      redirect_to "/carts"
     else
       render :show
     end
