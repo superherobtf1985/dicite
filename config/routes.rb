@@ -28,11 +28,11 @@ Rails.application.routes.draw do
         resource :reviews, only: [:create, :destroy]
       end
     end
-    resources :carts, only: [:show, :create, :destroy]
-    resource :payments, only: [:new] do
-      post "confirm", on: :member
-      post "create_shipping", on: :member
-      post "complete", on: :collection
+    resources :carts, only: [:create, :destroy]
+    resource :carts, only: [:show]
+    resources :payments, only: [:new, :create] do
+      get "confirm", on: :member
+      get "complete", on: :collection
     end
   end
 
