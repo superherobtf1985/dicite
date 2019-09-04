@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :reviews
   has_many :carts
+  has_many :shippings
+  has_many :orders
 
   validates :first_name, presence: true
   validates :last_name, presence: true

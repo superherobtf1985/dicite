@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_01_004222) do
+ActiveRecord::Schema.define(version: 2019_09_03_002410) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -78,10 +78,59 @@ ActiveRecord::Schema.define(version: 2019_09_01_004222) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "item_id"
+    t.string "item_name"
+    t.text "jacket_image_id"
+    t.integer "price"
+    t.integer "item_count"
+    t.string "artist_name"
+    t.string "genre_name"
+    t.string "label_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "how_to_pay"
+    t.string "delivery_charge"
+    t.integer "total_money"
+    t.integer "shipping_status"
+    t.string "postal_code"
+    t.string "prefecture"
+    t.string "city"
+    t.string "building"
+    t.string "phone"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "first_kana_name"
+    t.string "last_kana_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "shipping_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "item_id"
     t.integer "user_id"
     t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shippings", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "postal_code"
+    t.string "prefecture"
+    t.string "city"
+    t.string "building"
+    t.string "phone"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "first_kana_name"
+    t.string "last_kana_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

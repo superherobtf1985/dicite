@@ -1,0 +1,22 @@
+<div class="row">
+  <h3>購入履歴</h3>
+
+  <% Order.where(user_id: current_user.id).each do |order| %>
+    <div class="order">
+      購入日：<%= order.created_at %>
+      <% order.order_items.each do |order_item| %>
+        <div class="item-block">
+          <div class="col-xs-4">
+            <% attachment_image_tag order_item, :jacket_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+          </div>
+
+          <div class="col-xs-8">
+            CD名：<%= link_to order_item.item_name, item_path(order_item.item_id) %>
+            アーティスト名：<%= order_item.artist_name %>
+            値段：<%= order_item.price %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

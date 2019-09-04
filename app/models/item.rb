@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   has_many :favorites
   has_many :reviews
   has_many :carts
+  has_many :order_items
   attachment :jacket_image
   accepts_nested_attributes_for :cds, allow_destroy: true
 
