@@ -14,7 +14,7 @@
             <%= link_to "マイページ", user_path(current_user) %>
           </li>
           <li>
-            <%= link_to "カート", cart_path %>
+            <%= link_to "カート", "/carts", method: :get %>
           </li>
           <li>
             <%= link_to "お問い合わせ", new_contact_path %>

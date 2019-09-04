@@ -30,9 +30,9 @@ Rails.application.routes.draw do
     end
     resources :carts, only: [:create, :destroy]
     resource :carts, only: [:show]
-    resources :payments, only: [:new, :create] do
-      get "confirm", on: :member
-      get "complete", on: :collection
+    resource :payments, only: [:new, :create] do
+      post "confirm", on: :member
+      post "complete", on: :collection
     end
   end
 
