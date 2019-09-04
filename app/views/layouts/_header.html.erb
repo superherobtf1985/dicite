@@ -6,7 +6,7 @@
       </div>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><a><%= current_user %></a></li>
+          <li><a><%= current_user.last_name + current_user.first_name %></a></li>
           <li>
             <%= link_to "商品一覧", items_path %>
           </li>
@@ -14,7 +14,7 @@
             <%= link_to "マイページ", user_path(current_user) %>
           </li>
           <li>
-            <%= link_to "カート", cart_path %>
+            <%= link_to "カート", "/carts", method: :get %>
           </li>
           <li>
             <%= link_to "お問い合わせ", new_contact_path %>
