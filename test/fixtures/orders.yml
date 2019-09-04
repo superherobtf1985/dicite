@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  how_to_pay: 1
+  delivery_charge: MyString
+  total_money: 1
+  shipping_status: 1
+  postal_code: MyString
+  prefecture: MyString
+  city: MyString
+  building: MyString
+  phone: MyString
+  first_name: MyString
+  last_name: MyString
+  first_kana_name: MyString
+  last_kana_name: MyString
+
+two:
+  user_id: 1
+  how_to_pay: 1
+  delivery_charge: MyString
+  total_money: 1
+  shipping_status: 1
+  postal_code: MyString
+  prefecture: MyString
+  city: MyString
+  building: MyString
+  phone: MyString
+  first_name: MyString
+  last_name: MyString
+  first_kana_name: MyString
+  last_kana_name: MyString

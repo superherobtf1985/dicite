@@ -1,0 +1,16 @@
+<h3>注文確認画面</h3>
+<%= render 'end_user/carts/cart_items', carts: @carts %>
+
+<div class="payments">
+  <h4>支払い方法</h4>
+  <%= @order.how_to_pay %>
+</div>
+
+<div class="shipping">
+  <h4>配送先</h4>
+  <label>郵便番号：</label><%= @shipping.postal_code %><br>
+  <label>住所：</label><%= @shipping.prefecture + @shipping.city + @shipping.building %><br>
+  <label>お名前：</label><%= @shipping.last_name + @shipping.first_name %>
+</div>
+
+<%= link_to "注文を確定する", complete_payments_path(params: { shipping: @shipping, order: @order.how_to_pay }), :method => :post %>

@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    enums:
+      order:
+        how_to_pay:
+          cash: 代引き
+          transfer: 銀行振込

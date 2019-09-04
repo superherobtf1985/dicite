@@ -18,9 +18,9 @@ class EndUser::CartsController < ApplicationController
     redirect_to items_path
   end
 
-  def update
-    @cart = Cart.find(params[:id])
-  end
+  # def update
+  #   @cart = Cart.find(params[:id])
+  # end
 
   def show
     @carts = Cart.where(user_id: current_user.id)
