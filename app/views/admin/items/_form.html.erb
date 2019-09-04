@@ -1,0 +1,51 @@
+<%= form_for [:admin, item] do |f| %>
+  <%= render 'layouts/errors', obj: item %>
+
+  <div class="col-xs-4">
+    <div class="field">
+      <%= attachment_image_tag item, :jacket_image, :fill, 150, 150, fallback: "/images/no_image.jpg" %>
+      <%= f.attachment_field :jacket_image, class: "col-xs-12", placeholder: "ジャケット画像" %>
+    </div>
+  </div>
+  <div class="col-xs-8">
+    <div class="field">
+      <%= f.label :name, "商品名" %>
+      <%= f.text_field :name, class: 'col-xs-12' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :price, "価格" %>
+      <%= f.text_field :price, class: 'col-xs-12'%>
+    </div>
+
+    <div class="field">
+      <%= f.label :stock, "在庫数" %>
+      <%= f.text_field :stock, class: 'col-xs-12'%>
+    </div>
+
+    <div class="field">
+      <%= f.label :artist_id, "アーティスト名" %><br>
+      <%= f.collection_select :artist_id, Artist.all, :id, :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :label_id, "レーベル名" %><br>
+      <%= f.collection_select :label_id, Label.all, :id, :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :genre_id, "ジャンル名" %><br>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+    </div>
+
+    <%= link_to_add_association 'CDを追加', f, :cds, partical: 'items/cd_fields' %>
+
+    <%= f.fields_for :cds do |cd| %>
+      <%= render 'cd_fields', f: cd %>
+    <% end %>
+
+    <div class="actions row">
+      <%= f.submit "保存", class: 'btn btn-primary col-xs-12' %>
+    </div>
+  </div>
+<% end %>

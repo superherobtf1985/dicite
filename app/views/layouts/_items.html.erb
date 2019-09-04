@@ -1,0 +1,37 @@
+<table class="table table-hover table-inverse">
+  <thead>
+  <tr>
+      <th></th>
+      <th>商品名</th>
+      <th>アーティスト名</th>
+      <th>価格</th>
+      <th>ジャンル</th>
+      <th>レーベル</th>
+      <th>在庫数</th>
+      <th>いいね</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% items.each do |item| %>
+      <tr>
+        <td><%= attachment_image_tag item, :jacket_image, :fill, 50, 50, fallback: "/images/no_image.jpg" %></td>
+      <% if admin_signed_in? %>
+        <td><%= link_to item.name, admin_item_path(item) %></td>
+      <% else %>
+        <td><%= link_to item.name, item_path(item) %></td>
+      <% end %>
+        <td><%= item.artist.name %></td>
+        <td><%= item.price %></td>
+        <td><%= item.genre.name %></td>
+        <td><%= item.label.name %></td>
+        <td><%= item.stock %></td>
+        <td>
+          <div id="favorites_buttons_<%= item.id %>">
+            <%= render 'end_user/favorites/favorite', item: item %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
