@@ -1,6 +1,10 @@
 class EndUser::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    if Item.where(artist_id: params[:artist_id]).present?
+      @items = Item.where(artist_id: params[:artist_id])
+    else
+      @items = Item.all
+    end
   end
 
   def show
