@@ -1,16 +1,12 @@
 class Admin::ReviewsController < ApplicationController
-  def create
-    @item = Item.find(params[:id])
-    comment = current_user.reviews.new(review_params)
-    comment.item_id = @item.id
-    comment.save
-    redirect_to admin_item_path(@item)
-  end
-
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
     redirect_to admin_item_path(@review.item)
+  end
+
+  def update
+
   end
 
   private
