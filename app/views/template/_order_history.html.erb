@@ -1,0 +1,49 @@
+<div class="order_history">
+  <h2>購入履歴</h2>
+  <% orders.each do |order| %>
+    <% OrderItem.where(order_id: order.order_items).each do |order_item| %>
+      <div class="row">
+        <div class="col-md-6" style="text-align: center;">
+          <%= link_to item_path(order_item) do %>
+            <%= attachment_image_tag order_item, :jacket_image, :fill, 200, 200, fallback: "/assets/images/no_image.jpg" %>
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td class="td-width title-name">注文ID<span class="partition"></span></td>
+                <td colspan="2"><%= order_item.order.id %></td>
+              </tr>
+              <tr>
+                <td class="td-width title-name">商品名<span class="partition"></span></td>
+                <td colspan="2"><%= order_item.item_name %></td>
+              </tr>
+              <tr>
+                <td class="td-width title-name">アーティスト名<span class="partition"></span></td>
+                <td colspan="2"><%= order_item.artist_name %></td>
+              </tr>
+              <tr>
+                <td class="td-width title-name">値段<span class="partition"></span></td>
+                <td colspan="2"><span>¥</span><%= order_item.price.to_s(:delimited, delimiter: ',') %></td>
+              </tr>
+              <tr>
+                <td class="td-width title-name">数量<span class="partition"></span></td>
+                <% subtotal = order_item.item_count * order_item.price %>
+                <td colspan="2"><%= order_item.item_count %><span>個</span></td>
+              </tr>
+              <tr>
+                <td class="td-width title-name">小計<span class="partition"></span></td>
+                <td colspan="2"><span>¥</span><%= subtotal.to_s(:delimited, delimiter: ',') %></td>
+              </tr>
+              <tr>
+                <td class="td-width title-name">購入日時<span class="partition"></span></td>
+                <td colspan="2"><%= order_item.order.created_at.strftime('%Y/%m/%d %H:%m') %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
