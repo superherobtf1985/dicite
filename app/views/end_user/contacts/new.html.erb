@@ -1,0 +1,9 @@
+<h1>お問い合わせフォーム</h1>
+<%= form_for @contact do |f| %>
+  <h3>件名</h3>
+  <%= f.text_field :subject %>
+  <h3>本文</h3>
+  <%= f.text_area :contacts %>
+  <br>
+  <%= f.submit "送信" %>
+<% end %>
