@@ -17,6 +17,8 @@ class Item < ApplicationRecord
   validates :artist_id, presence: true
   validates :label_id, presence: true
 
+  enum status: { sale: 0, sold_out: 1}
+
   def favorited_by?(user)
    favorites.where(user_id: user.id).exists?
   end

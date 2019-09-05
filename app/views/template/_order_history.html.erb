@@ -12,8 +12,12 @@
           <table class="table">
             <tbody>
               <tr>
-                <td class="td-width title-name">注文ID<span class="partition"></span></td>
-                <td colspan="2"><%= order_item.order.id %></td>
+                <td class="td-width title-name">購入者<span class="partition"></span></td>
+                <td colspan="2"><%= order_item.order.last_name + order_item.order.first_name %></td>
+              </tr>
+              <tr>
+                <td class="td-width title-name">購入日時<span class="partition"></span></td>
+                <td colspan="2"><%= order_item.order.created_at.strftime('%Y/%m/%d %H:%m') %></td>
               </tr>
               <tr>
                 <td class="td-width title-name">商品名<span class="partition"></span></td>
@@ -35,10 +39,6 @@
               <tr>
                 <td class="td-width title-name">小計<span class="partition"></span></td>
                 <td colspan="2"><span>¥</span><%= subtotal.to_s(:delimited, delimiter: ',') %></td>
-              </tr>
-              <tr>
-                <td class="td-width title-name">購入日時<span class="partition"></span></td>
-                <td colspan="2"><%= order_item.order.created_at.strftime('%Y/%m/%d %H:%m') %></td>
               </tr>
             </tbody>
           </table>

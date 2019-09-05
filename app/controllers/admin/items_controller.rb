@@ -18,7 +18,6 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @review = Review.new
   end
 
   def update
@@ -31,10 +30,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to items_path
   end
 
   private
   def item_params
-    params.require(:item).permit(:jacket_image, :name, :price, :stock, :status, :release_date, :artist_id, :label_id, :genre_id, cds_attributes: [:id, :number, :_destroy, songs_attributes: [:id, :name, :_destroy]])
+    params.require(:item).permit(:jacket_image, :name, :price, :stock, :status, :release_date, :artist_id, :label_id, :genre_id, :status, cds_attributes: [:id, :number, :_destroy, songs_attributes: [:id, :name, :_destroy]])
   end
 end
