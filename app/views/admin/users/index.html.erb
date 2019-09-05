@@ -1,0 +1,28 @@
+<div class="users">
+  <table class="table table-hover table-inverse">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>氏名</th>
+        <th>カナ</th>
+        <th>電話番号</th>
+        <th>住所</th>
+        <th>メールアドレス</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %>
+          <td><%= link_to user.last_name + user.first_name, admin_user_path(user.id) %></td>
+          <td><%= link_to user.last_kana_name + user.first_kana_name, admin_user_path(user) %></td>
+          <td><%= user.phone %></td>
+          <td><%= user.prefecture + user.city + user.building %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

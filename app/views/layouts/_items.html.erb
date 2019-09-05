@@ -8,6 +8,7 @@
       <th>ジャンル</th>
       <th>レーベル</th>
       <th>在庫数</th>
+      <th>販売状況</th>
       <th>いいね</th>
     </tr>
   </thead>
@@ -26,6 +27,7 @@
         <td><%= item.genre.name %></td>
         <td><%= item.label.name %></td>
         <td><%= item.stock %></td>
+        <td><%= item.status %></td>
         <td>
           <div id="favorites_buttons_<%= item.id %>">
             <%= render 'end_user/favorites/favorite', item: item %>

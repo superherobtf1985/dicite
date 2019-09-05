@@ -1,0 +1,45 @@
+<h2>プロフィール</h2>
+
+<div class="profile">
+  <%= form_for @user, url: "/admin/users/#{@user.id}" do |f| %>
+    <label>名前</label>
+    <div class="field">
+        <%= f.text_field :last_name, autofocus: true, placeholder: '姓', class: "name" %>
+        <%= f.text_field :first_name, autofocus: true, placeholder: '名', class: "name"  %>
+    </div>
+
+    <div class="field">
+        <%= f.text_field :last_kana_name, autofocus: true, placeholder: 'セイ', class: "name" %>
+        <%= f.text_field :first_kana_name, autofocus: true, placeholder: 'メイ', class: "name" %>
+    </div>
+
+    <label>住所(ハイフンなし)</label>
+    <div class="field">
+        <%= f.text_field :postal_code, autofocus: true, placeholder: '郵便番号', class: "postal_code" %>
+    </div>
+
+    <div class="field">
+        <%= f.text_field :prefecture, autofocus: true, placeholder: '都道府県', class: "address" %>
+        <%= f.text_field :city, autofocus: true, placeholder: '市町村名', class: "address" %>
+        <%= f.text_field :building, autofocus: true, placeholder: '番地・建物', class: "address" %>
+    </div>
+
+    <label>電話番号</label>
+    <div class="field">
+        <%= f.text_field :phone, autofocus: true, placeholder: '電話番号', class: "phone" %>
+    </div>
+
+    <label>メールアドレス</label>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "登録", class: "btn btn-primary" %>
+      <%= link_to "退会に関して", admin_user_path(@user.id), method: :delete, data: { confirm: '本当に消しますか?' }, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<%= render '/template/order_history', orders: @orders %>
+<%= render '/template/favorite_index', favorites: @favorites %>

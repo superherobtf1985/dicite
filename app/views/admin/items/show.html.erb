@@ -3,5 +3,18 @@
 <div class="row">
   <%= render 'form', item: @item %>
 
-  <%= render 'reviews/review', item: @item %>
+  <h2><%= @item.reviews.count %>件のレビュー</h2>
+  <table class="table">
+    <% @item.reviews.each do |review| %>
+      <tr>
+        <td<%= review.user.last_name + review.user.first_name %></td>
+        <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+      <%= form_for review, url: "/admin/items/#{@item.id}/reviews/#{review.id}" do |f| %>
+        <td><%= f.text_field :comment %></td>
+        <td><%= link_to '削除', "/admin/items/#{@item.id}/reviews/#{review.id}", method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger"%></td>
+        <td><%= f.submit %></td>
+      <% end %>
+      </tr>
+    <% end %>
+  </table>
 </div>

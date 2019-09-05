@@ -1,0 +1,31 @@
+<div class="favorite-index">
+  <h2>いいね一覧</h2>
+  <% favorites.each do |favorite| %>
+    <div class="row">
+      <div class="col-md-6" style="text-align: center;">
+        <%= link_to item_path(favorite.item) do %>
+          <%= attachment_image_tag favorite.item, :jacket_image, :fill, 150, 150, fallback: "/assets/images/no_image.jpg" %>
+        <% end %>
+      </div>
+      <div class="col-md-6">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>商品名</td>
+              <td colspan="2"><%= favorite.item.name %></td>
+            </tr>
+            <tr>
+              <td>アーティスト名</td>
+              <td colspan="2"><%= favorite.item.artist.name %></td>
+            </tr>
+            <tr>
+              <td>値段</td>
+              <td colspan="2"><span>¥</span><%= favorite.item.price.to_s(:delimited, delimiter: ',') %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+  <%# <%= paginate @favorites, class: "paginate" %> %>
+</div>
