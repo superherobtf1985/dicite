@@ -10,6 +10,7 @@ class Admin::ContactsController < ApplicationController
   def update
     @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
+      NotificationMailer.send_confirm_to_user(@contact).deliver
       redirect_to admin_contacts_path
     else
       render :show

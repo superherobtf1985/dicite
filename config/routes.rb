@@ -50,4 +50,7 @@ Rails.application.routes.draw do
   end
 
   root 'end_user/items#index'
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end

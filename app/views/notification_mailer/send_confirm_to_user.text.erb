@@ -1,0 +1,21 @@
+<%= @contact.user.last_name + @contact.user.first_name %> 様
+
+お世話になっております。
+dicite株式会社へのお問い合わせありがとうございました。
+
+以下の内容でお問い合わせを受け付けいたしました。
+
+━━━━━━□■□　お問い合わせ内容　□■□━━━━━━
+
+お名前：<%= @contact.user.last_name + @contact.user.first_name %>
+お問い合せ日時：<%= @contact.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>
+お問い合わせ件名：<%= @contact.subject %>
+お問い合わせ本文：<%= @contact.contacts %>
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+担当の"長野のおっさん"が回答させていただきます。
+
+<%= @contact.reply_contents %>
+
+今後ともよろしくお願いいたします。

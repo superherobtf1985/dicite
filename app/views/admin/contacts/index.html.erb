@@ -22,6 +22,11 @@
         <%= contact.created_at %>
       </td>
       <td>
+        <% if contact.reply_contents %>
+          送信済み
+        <% else %>
+          未送信
+        <% end %>
       </td>
     </tr>
   <% end %>
