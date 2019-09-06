@@ -16,6 +16,6 @@ class EndUser::ContactsController < ApplicationController
 
   private
   def contact_params
-    params.require(:contact).permit(:subjects, :contacts)
+    params.require(:contact).permit(:subject, :contacts)
   end
 end

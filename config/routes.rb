@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :end_user do
-    get 'contacts/new'
-    get 'contacts/create'
-  end
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
