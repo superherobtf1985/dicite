@@ -19,7 +19,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    redirect_to root
+    user = User.find(params[:id])
+    Favorite.where(user_id: user.id).destroy_all
+    Review.where(user_id: user.id).destroy_all
+    user.destroy
+    redirect_to admin_users_path
   end
 
   private

@@ -1,6 +1,6 @@
 <h3>管理者商品一覧</h3>
 <div class="row">
-  <%= render 'search' %>
+  <%= render '/template/search' %>
   <%= render 'layouts/items', items: @items %>
-  <%= render 'favorite_ranking', all_ranks: @all_ranks %>
+  <%= render '/template/favorite_ranking', all_ranks: @all_ranks %>
 </div>

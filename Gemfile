@@ -72,3 +72,4 @@ gem 'search_cop'
 gem "cocoon"
 gem "enum_help"
 gem "ransack"
+gem "paranoia"
