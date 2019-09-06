@@ -43,6 +43,9 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :create, :show, :update, :destroy, :new] do
       resources :reviews, only: [:update, :destroy]
     end
+    post "/items/artist", to: "items#make_artist", as: "make_artist"
+    post "/items/label", to: "items#make_label", as: "make_label"
+    post "/items/genre", to: "items#make_genre", as: "make_genre"
   end
 
   constraints -> request { request.session[:admin_id].present? } do
