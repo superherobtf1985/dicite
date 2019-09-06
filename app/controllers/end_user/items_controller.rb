@@ -4,6 +4,9 @@ class EndUser::ItemsController < ApplicationController
 
     if Item.where(artist_id: params[:artist_id]).present?
       @items = Item.where(artist_id: params[:artist_id])
+    elsif Item.ransack(params[:q]).present?
+      @search = Item.ransack(params[:q])
+      @items = @search.result
     else
       @items = Item.all
     end

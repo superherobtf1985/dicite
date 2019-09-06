@@ -71,3 +71,4 @@ gem "kaminari", "~>1.1.1"
 gem 'search_cop'
 gem "cocoon"
 gem "enum_help"
+gem "ransack"
