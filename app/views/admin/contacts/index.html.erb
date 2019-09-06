@@ -1,0 +1,33 @@
+<h1>お問い合わせ一覧</h1>
+<table>
+  <tr>
+    <th>氏名</th>
+    <th>件名</th>
+    <th>送信日時</th>
+    <th>処理状態</th>
+  </tr>
+  <% @contacts.each do |contact| %>
+    <tr>
+      <td>
+        <%= link_to edit_admin_user_path(contact.user) do %>
+          <%= contact.user.last_name + contact.user.first_name %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to admin_contact_path(contact) do %>
+          <%= contact.subject %>
+        <% end %>
+      </td>
+      <td>
+        <%= contact.created_at %>
+      </td>
+      <td>
+        <% if contact.reply_contents %>
+          送信済み
+        <% else %>
+          未送信
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
