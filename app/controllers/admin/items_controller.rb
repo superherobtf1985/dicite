@@ -11,6 +11,9 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @artist = Artist.new
+    @label = Label.new
+    @genre = Genre.new
   end
 
   def create
@@ -41,8 +44,44 @@ class Admin::ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def make_artist
+    @artist = Artist.new(artist_params)
+    if @artist.save
+      redirect_to new_admin_item_path
+    else
+      render :new
+    end
+  end
+
+  def make_label
+    @label = Label.new(label_params)
+    if @label.save
+      redirect_to new_admin_item_path
+    else
+      render :new
+    end
+  end
+
+  def make_genre
+    @genre = Genre.new(genre_params)
+    if @genre.save
+      redirect_to new_admin_item_path
+    else
+      render :new
+    end
+  end
+
   private
   def item_params
     params.require(:item).permit(:jacket_image, :name, :price, :stock, :status, :release_date, :artist_id, :label_id, :genre_id, :status, cds_attributes: [:id, :number, :_destroy, songs_attributes: [:id, :name, :_destroy]])
+  end
+  def artist_params
+    params.require(:artist).permit(:name)
+  end
+  def label_params
+    params.require(:label).permit(:name)
+  end
+  def genre_params
+    params.require(:genre).permit(:name)
   end
 end

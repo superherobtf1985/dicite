@@ -47,5 +47,35 @@
         <%= f.submit "保存", class: 'btn btn-primary'%>
       </div>
     <% end %>
+    <%= form_for @artist, url: admin_make_artist_path do |artist| %>
+      <div class="field">
+        <%= artist.label :name, "アーティスト名" %>
+        <%= artist.text_field :name, class: 'col-xs-12' %>
+      </div>
+
+      <div class="actions">
+        <%= artist.submit "アーティスト保存", class: 'btn btn-primary'%>
+      </div>
+    <% end %>
+    <%= form_for @label, url: admin_make_label_path do |label| %>
+      <div class="field">
+        <%= label.label :name, "レーベル名" %>
+        <%= label.text_field :name, class: 'col-xs-12' %>
+      </div>
+
+      <div class="actions">
+        <%= label.submit "レーベル保存", class: 'btn btn-primary'%>
+      </div>
+    <% end %>
+    <%= form_for @genre, url: admin_make_genre_path do |genre| %>
+      <div class="field">
+        <%= genre.label :name, "ジャンル名" %>
+        <%= genre.text_field :name, class: 'col-xs-12' %>
+      </div>
+
+      <div class="actions">
+        <%= genre.submit "ジャンル保存", class: 'btn btn-primary'%>
+      </div>
+    <% end %>
   </div>
 </div>
