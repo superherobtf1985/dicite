@@ -15,7 +15,7 @@ class EndUser::CartsController < ApplicationController
       exists_item.count += cart_params[:count].to_i
       if cart.item.stock >= exists_item.count
         exists_item.save
-        redirect_to carts_path
+        redirect_to "/carts"
       end
     end
     redirect_to carts_path

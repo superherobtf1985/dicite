@@ -1,6 +1,6 @@
 class Shipping < ApplicationRecord
-  belongs_to :user
-  belongs_to :order
+  belongs_to :user, dependent: :destroy
+  belongs_to :order, dependent: :destroy
 
   validates :first_name, presence: true, length: { maximum: 20, minmum: 2 }
   validates :last_name, presence: true, length: { maximum: 20, minmum: 2 }
