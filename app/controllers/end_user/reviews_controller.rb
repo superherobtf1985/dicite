@@ -1,4 +1,6 @@
 class EndUser::ReviewsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @item = Item.find(params[:id])
     comment = current_user.reviews.new(review_params)

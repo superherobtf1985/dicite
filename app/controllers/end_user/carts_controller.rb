@@ -1,15 +1,24 @@
 class EndUser::CartsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     cart = Cart.new(cart_params)
-    cart.user_id = current_user.id
+    exists_item = Cart.find_by(item_id: cart_params[:item_id])
 
-    if cart.item.stock >= cart.count
-      cart.save
-      redirect_to "/carts"
+    if exists_item.blank?
+      if cart.item.stock >= cart.count
+        cart.user_id = current_user.id
+        cart.save
+        redirect_to carts_path
+      end
     else
-      render :show
+      exists_item.count += cart_params[:count].to_i
+      if cart.item.stock >= exists_item.count
+        exists_item.save
+        redirect_to carts_path
+      end
     end
+    redirect_to carts_path
   end
 
   def destroy
@@ -17,10 +26,6 @@ class EndUser::CartsController < ApplicationController
     cart.destroy
     redirect_to items_path
   end
-
-  # def update
-  #   @cart = Cart.find(params[:id])
-  # end
 
   def show
     @carts = Cart.where(user_id: current_user.id)
