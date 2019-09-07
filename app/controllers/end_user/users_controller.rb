@@ -1,4 +1,6 @@
 class EndUser::UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @user = User.find(current_user.id)
     @orders = Order.where(user_id: current_user.id)
