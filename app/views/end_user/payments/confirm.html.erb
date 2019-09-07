@@ -1,5 +1,19 @@
 <h3>注文確認画面</h3>
-<%= render 'end_user/carts/cart_items', carts: @carts %>
+<% sum_price = 0 %>
+
+<% @carts.each do |cart| %>
+  <% sum_price += (cart.item.price * cart.count) %>
+
+  <div class="cart-items">
+    <%= attachment_image_tag cart.item, :jacket_image, :fill, 50, 50, fallback: "/images/no_image.jpg" %>
+    <%= cart.item.artist.name %>
+    <%= cart.item.cds.name %>
+    <%= link_to cart.item.name, "/items/#{cart.item.id}" %>
+    単価<%= cart.item.price %>円
+    <%= cart.count %>個
+    <%= link_to "削除", cart_path(cart.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger" %>
+  </div>
+<% end %>
 
 <div class="payments">
   <h4>支払い方法</h4>

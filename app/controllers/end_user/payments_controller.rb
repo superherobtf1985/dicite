@@ -9,7 +9,7 @@ class EndUser::PaymentsController < ApplicationController
     @shipping = Shipping.new(shipping_params)
     @shipping.user_id = current_user.id
 
-    if @shipping.save
+    if @shipping.save!
       redirect_to new_payments_path
     else
       @carts = Cart.where(user_id: current_user.id)

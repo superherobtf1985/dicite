@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resource :payments, only: [:new, :create] do
       post "confirm", on: :member
       post "complete", on: :collection
+      post "create_shipping", on: :member
     end
   end
 
