@@ -1,20 +1,21 @@
-<% sum_price = 0 %>
-
-<% @carts.each do |cart| %>
-  <% sum_price += (cart.item.price * cart.count) %>
-
-  <div class="cart-items">
-    <%= attachment_image_tag cart.item, :jacket_image, :fill, 50, 50, fallback: "/images/no_image.jpg" %>
-    <%= cart.item.artist.name %>
-    <%= cart.item.cds.name %>
-    <%= link_to cart.item.name, "/items/#{cart.item.id}" %>
-    単価<%= cart.item.price %>円
-    <%= cart.count %>個
-    <%= link_to "削除", cart_path(cart.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger" %>
-  </div>
-<% end %>
-
 <% if @carts.count >= 1 %>
+  <% binding.pry %>
+  <% sum_price = 0 %>
+
+  <% @carts.each do |cart| %>
+    <% sum_price += (cart.item.price * cart.count) %>
+
+    <div class="cart-items">
+      <%= attachment_image_tag cart.item, :jacket_image, :fill, 50, 50, fallback: "/images/no_image.jpg" %>
+      <%= cart.item.artist.name %>
+      <%= cart.item.cds.name %>
+      <%= link_to cart.item.name, "/items/#{cart.item.id}" %>
+      単価<%= cart.item.price %>円
+      <%= cart.count %>個
+      <%= link_to "削除", cart_path(cart.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger" %>
+    </div>
+  <% end %>
+
   <h3>商品数<%= @carts.count %>点
   <h3>合計<%= sum_price %>円</h3>
   <h3>総計<%= sum_price + 500 %>円</h3>
