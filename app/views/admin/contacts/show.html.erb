@@ -1,14 +1,20 @@
-<h1>お問い合わせ詳細</h1>
-<h3>氏名</h3>
-<%= @contact.user.last_name + @contact.user.first_name %>
-<h3>件名</h3>
-<%= @contact.subject %>
-<h3>本文</h3>
-<%= @contact.contacts %>
+<div class="row">
+  <div class="col-lg-3"></div>
+  <div class="col-lg-6">
+    <div class="admin-contact">
+      <h1>お問い合わせ詳細</h1>
+      <p>氏名 : <%= @contact.user.last_name + @contact.user.first_name %></p>
+      <p>件名 : <%= @contact.subject %></p>
+      <p>本文</p>
+      <%= @contact.contacts %>
 
-<h2>返信フォーム</h2>
-<%= form_for @contact, url: admin_contact_path do |f| %>
-  <%= f.text_area :reply_contents %>
-  <br>
-  <%= f.submit "送信" %>
-<% end %>
+      <h2>返信フォーム</h2>
+      <%= form_for @contact, url: admin_contact_path do |f| %>
+        <%= f.text_area :reply_contents, size: "60x15" %>
+        <br>
+        <%= f.submit "送信" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-3"></div>
+</div>
