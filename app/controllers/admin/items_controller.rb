@@ -16,6 +16,7 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.cds.build
     @artist = Artist.new
     @label = Label.new
     @genre = Genre.new
