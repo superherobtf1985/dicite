@@ -9,7 +9,7 @@ class EndUser::PaymentsController < ApplicationController
     @shipping = Shipping.new(shipping_params)
     @shipping.user_id = current_user.id
 
-    if @shipping.save!
+    if @shipping.save
       redirect_to new_payments_path
     else
       @carts = Cart.where(user_id: current_user.id)
@@ -20,7 +20,12 @@ class EndUser::PaymentsController < ApplicationController
   def confirm
     @carts = Cart.where(user_id: current_user.id)
     @order = Order.new(order_params)
-    @shipping = Shipping.find(@order.shipping_id)
+
+    if @order.shipping_id == nil
+      render :new
+    else
+      @shipping = Shipping.find(@order.shipping_id)
+    end
   end
 
   def complete
