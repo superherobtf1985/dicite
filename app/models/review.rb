@@ -1,4 +1,6 @@
 class Review < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  belongs_to :item, dependent: :destroy
+  belongs_to :user
+  belongs_to :item
+
+  validates :comment, presence: true
 end

@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
-  belongs_to :artist, dependent: :destroy
-  belongs_to :genre, dependent: :destroy
-  belongs_to :label, dependent: :destroy
+  belongs_to :artist
+  belongs_to :genre
+  belongs_to :label
   has_many :cds
   has_many :favorites
   has_many :reviews

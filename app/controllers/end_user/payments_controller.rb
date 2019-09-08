@@ -20,7 +20,12 @@ class EndUser::PaymentsController < ApplicationController
   def confirm
     @carts = Cart.where(user_id: current_user.id)
     @order = Order.new(order_params)
-    @shipping = Shipping.find(@order.shipping_id)
+
+    if @order.shipping_id == nil
+      render :new
+    else
+      @shipping = Shipping.find(@order.shipping_id)
+    end
   end
 
   def complete

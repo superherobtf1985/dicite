@@ -7,7 +7,7 @@
       <% order.order_items.each do |order_item| %>
         <div class="item-block">
           <div class="col-xs-4">
-            <% attachment_image_tag order_item, :jacket_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+            <% attachment_image_tag order_item, :jacket_image, fallback: "no_image.jpg", size: '50x50', class: "img-rounded" %>
           </div>
 
           <div class="col-xs-8">
