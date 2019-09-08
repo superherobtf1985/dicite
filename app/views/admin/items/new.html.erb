@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-7">
-    <%= form_for(@item, namespace: 'admin', url: admin_items_path) do |f| %>
+    <%= form_for [:admin, @item] do |f| %>
       <%= render 'layouts/errors', obj: @item %>
 
       <div class="field">
@@ -43,10 +43,19 @@
         <%= f.select :status, Item.statuses.keys.to_a, {} %>
       </div>
 
+      <%= link_to_add_association 'CDを追加', f, :cds, partical: 'items/cd_fields' %>
+
+      <%= f.fields_for :cds do |cd| %>
+        <%= render 'cd_fields', f: cd %>
+      <% end %>
+
       <div class="actions">
         <%= f.submit "保存", class: 'btn btn-primary'%>
       </div>
     <% end %>
+
+
+    <h3>アーティスト、レーベル、ジャンル新規追加</h3>
     <%= form_for @artist, url: admin_make_artist_path do |artist| %>
       <div class="field">
         <%= artist.label :name, "アーティスト名" %>
