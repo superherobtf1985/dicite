@@ -15,6 +15,8 @@ class EndUser::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
+      @orders = Order.where(user_id: current_user.id)
+      @favorites = Favorite.where(user_id: current_user.id)
       render :show
     end
   end

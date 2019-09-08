@@ -8,20 +8,25 @@ class EndUser::CartsController < ApplicationController
     if exists_item.blank?
       if cart.item.stock >= cart.count
         cart.user_id = current_user.id
-        cart.save
+        if cart.save
+          flash[:notice] = 'カートに追加されました'
+        end
       end
     else
       exists_item.count += cart_params[:count].to_i
       if cart.item.stock >= exists_item.count
-        exists_item.save
+        if exists_item.save
+          flash[:notice] = 'カートに追加されました'
+        end
       end
     end
-    redirect_to "/carts"
+    redirect_to carts_path
   end
 
   def destroy
     cart = Cart.find(params[:id])
     cart.destroy
+    flash[:notice] = 'カートの商品を削除しました'
     redirect_to items_path
   end
 

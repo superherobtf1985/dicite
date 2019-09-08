@@ -18,3 +18,5 @@
      商品に対するレビュー、購入履歴、お問い合わせ履歴などは完全に消すことができません。</li>
   <li><b>退会には1~2週間ほどかかります。</b></li>
 </ul>
+
+<%= link_to '退会', admin_user_path(current_user.id), method: :delete, data: { confirm: '本当に消しますか?' }, class: 'btn btn-primary' %> 

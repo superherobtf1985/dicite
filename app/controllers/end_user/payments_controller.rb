@@ -10,6 +10,7 @@ class EndUser::PaymentsController < ApplicationController
     @shipping.user_id = current_user.id
 
     if @shipping.save
+      flash[:notice] = '配送先が追加されました'
       redirect_to new_payments_path
     else
       @carts = Cart.where(user_id: current_user.id)
@@ -65,6 +66,7 @@ class EndUser::PaymentsController < ApplicationController
       order_item.save
       cart_item.destroy
     end
+    flash[:notice] = '注文が完了しました'
   end
 
   private
