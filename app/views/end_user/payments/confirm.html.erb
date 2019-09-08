@@ -5,7 +5,7 @@
   <% sum_price += (cart.item.price * cart.count) %>
 
   <div class="cart-items">
-    <%= attachment_image_tag cart.item, :jacket_image, :fill, 50, 50, fallback: "/images/no_image.jpg" %>
+    <%= attachment_image_tag cart.item, :jacket_image, fallback: "no_image.jpg", size: '50x50', class: "img-rounded" %>
     <%= cart.item.artist.name %>
     <%= cart.item.cds.name %>
     <%= link_to cart.item.name, "/items/#{cart.item.id}" %>
