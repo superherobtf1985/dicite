@@ -1,7 +1,5 @@
 <%= render '/layouts/errors', obj: @item %>
 
-<h3>商品詳細</h3>
-
 <div class="row">
   <div class="col-xs-4">
     <%= attachment_image_tag @item, :jacket_image, fallback: "no_image.jpg", size: '150x150', class: "img-rounded" %>
@@ -12,57 +10,57 @@
 
     <%= form_for(Cart.new, url:"/carts") do |f| %>
         <%= f.number_field :count, min: 1 %>
-        <%= f.hidden_field :item_id, :value => "#{@item.id}" %>
-        <%= f.submit "カートに追加", class: "btn btn-danger glyphicon glyphicon-shopping-cart" %>
+        <%= f.hidden_field :item_id, :value => "#{@item.id}" %><br>
+        <%= f.submit "カートに追加", class: "btn btn-primary glyphicon glyphicon-shopping-cart" %>
     <% end %>
   </div>
 
   <div class="col-xs-8">
-    <table class="col-xs-12">
+    <table class="table col-xs-12">
       <tr>
-        <td>商品名：</td>
+        <td>商品名</td>
         <td><%= @item.name %></td>
       </tr>
       <tr>
-        <td>アーティスト名：</td>
+        <td>アーティスト名</td>
         <td><%= @item.artist.name %></td>
       </tr>
       <tr>
-        <td>値段：</td>
-        <td><%= @item.price %></td>
+        <td>値段</td>
+        <td><%= @item.price %>円</td>
       </tr>
       <tr>
-        <td>ジャンル名：</td>
+        <td>ジャンル名</td>
         <td><%= @item.genre.name %></td>
       </tr>
       <tr>
-        <td>レーベル名：</td>
+        <td>レーベル名</td>
         <td><%= @item.label.name %></td>
       </tr>
       <tr>
-        <td>在庫数：</td>
-        <td><%= @item.stock %></td>
+        <td>在庫数</td>
+        <td><%= @item.stock %>個</td>
       </tr>
       <tr>
-        <td>ステータス：</td>
+        <td>ステータス</td>
         <td><%= @item.status %></td>
       </tr>
   <% @item.cds.each do |cd| %>
       <tr>
-        <td>CD番号：</td>
+        <td>CD番号</td>
         <td><%= cd.number %></td>
       </tr>
-    <% Song.where(cd_id: cd).each do |song| %>
       <tr>
-        <td>曲名：</td>
-        <td><%= song.name %>
+    <% Song.where(cd_id: cd).each do |song| %>
+        <td>曲名</td>
+        <td><%= song.name %></td>
       </tr>
     <% end %>
   <% end %>
     </table>
+  </div>
 
-    <div id="review">
-      <%= render 'reviews/review', item: @item, review: @review %>
-    </div>
+  <div id="review col-xs-12">
+    <%= render 'reviews/review', item: @item, review: @review %>
   </div>
 </div>
