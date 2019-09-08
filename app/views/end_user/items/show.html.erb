@@ -45,8 +45,20 @@
       </tr>
       <tr>
         <td>ステータス：</td>
-        <td></td>
+        <td><%= @item.status %></td>
       </tr>
+  <% @item.cds.each do |cd| %>
+      <tr>
+        <td>CD番号：</td>
+        <td><%= cd.number %></td>
+      </tr>
+    <% Song.where(cd_id: cd).each do |song| %>
+      <tr>
+        <td>曲名：</td>
+        <td><%= song.name %>
+      </tr>
+    <% end %>
+  <% end %>
     </table>
 
     <div id="review">

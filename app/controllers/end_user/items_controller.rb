@@ -13,5 +13,6 @@ class EndUser::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @review = Review.new
+    @cds = Cd.where(item_id: @item.id)
   end
 end
