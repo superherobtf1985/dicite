@@ -20,7 +20,7 @@
   <h3>合計<%= sum_price %>円</h3>
   <h3>総計<%= sum_price + 500 %>円</h3>
   <%= link_to 'レジに進む', new_payments_path, class: "btn btn-primary
-  " %>
+  ", data: {"turbolinks" => false}  %>
 <% else %>
   <h3>カートに商品はありません</h3>
 <% end %>

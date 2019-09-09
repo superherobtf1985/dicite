@@ -8,7 +8,7 @@ class EndUser::ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
-    if @contact.save
+    if @contact.save!
       flash[:notice] = "ご意見ありがとうございました。"
       redirect_to user_path(current_user)
     else
