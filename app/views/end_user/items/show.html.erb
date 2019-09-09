@@ -8,10 +8,12 @@
       <%= render 'end_user/favorites/favorite', item: @item %>
     </div>
 
-    <%= form_for(Cart.new, url:"/carts") do |f| %>
-        <%= f.number_field :count, min: 1 %>
-        <%= f.hidden_field :item_id, :value => "#{@item.id}" %><br>
-        <%= f.submit "カートに追加", class: "btn btn-primary glyphicon glyphicon-shopping-cart" %>
+    <% if @item.status == 'sale' %>
+      <%= form_for(Cart.new, url:"/carts") do |f| %>
+          <%= f.number_field :count, min: 1 %>
+          <%= f.hidden_field :item_id, :value => "#{@item.id}" %><br>
+          <%= f.submit "カートに追加", class: "btn btn-primary glyphicon glyphicon-shopping-cart" %>
+      <% end %>
     <% end %>
   </div>
 
