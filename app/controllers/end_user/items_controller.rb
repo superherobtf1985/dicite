@@ -8,6 +8,8 @@ class EndUser::ItemsController < ApplicationController
     if params[:artist_id].present?
       @items = Item.where(artist_id: params[:artist_id])
     end
+
+    @items = @items.page(params[:page]).reverse_order
   end
 
   def show

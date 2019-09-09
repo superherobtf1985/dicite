@@ -9,6 +9,9 @@
 
   <div class="item-index col-xs-12">
     <%= render 'layouts/items', items: @items %>
+    <div class="page-wrapper">
+      <%= paginate @items, class: "paginate" %>
+    </div>
 
     <% if @all_ranks.present? %>
       <div class="favorite-ranking col-xs-12">
