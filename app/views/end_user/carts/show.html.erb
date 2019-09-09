@@ -1,3 +1,5 @@
+<h3>商品数<%= @carts.count %>点
+
 <% if @carts.count >= 1 %>
   <% sum_price = 0 %>
 
@@ -5,7 +7,7 @@
     <% sum_price += (cart.item.price * cart.count) %>
 
     <div class="cart-items">
-      <%= attachment_image_tag cart.item, :jacket_image, fallback: "no_image.jpg", size: '50x50', class: "img-rounded" %>
+      <%= attachment_image_tag cart.item, :jacket_image, fallback: "no_image.jpg", size: '100x100', class: "img-rounded" %>
       <%= cart.item.artist.name %>
       <%= cart.item.cds.name %>
       <%= link_to cart.item.name, "/items/#{cart.item.id}" %>
@@ -16,11 +18,9 @@
     </div>
   <% end %>
 
-  <h3>商品数<%= @carts.count %>点
   <h3>合計<%= sum_price %>円</h3>
   <h3>総計<%= sum_price + 500 %>円</h3>
-  <%= link_to 'レジに進む', new_payments_path, class: "btn btn-primary
-  " %>
+  <%= link_to 'レジに進む', new_payments_path, class: "btn btn-primary" %>
 <% else %>
   <h3>カートに商品はありません</h3>
 <% end %>

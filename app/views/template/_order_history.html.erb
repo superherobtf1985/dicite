@@ -1,49 +1,50 @@
-<div class="order_history">
-  <h2>購入履歴</h2>
+<div class="order-wrapper">
+<h2>購入履歴</h2>
   <% orders.each do |order| %>
-    <% OrderItem.where(order_id: order.id).each do |order_item| %>
-      <div class="row">
-        <div class="col-md-6" style="text-align: center;">
-          <%= link_to item_path(order_item) do %>
-            <%= attachment_image_tag order_item, :jacket_image, fallback: "no_image.jpg", size: '200x200', class: "img-rounded" %>
-          <% end %>
-        </div>
-        <div class="col-md-6">
-          <table class="table">
-            <tbody>
-              <tr>
-                <td class="td-width title-name">購入者<span class="partition"></span></td>
-                <td colspan="2"><%= order_item.order.last_name + order_item.order.first_name %></td>
-              </tr>
-              <tr>
-                <td class="td-width title-name">購入日時<span class="partition"></span></td>
-                <td colspan="2"><%= order_item.order.created_at.strftime('%Y/%m/%d %H:%m') %></td>
-              </tr>
-              <tr>
-                <td class="td-width title-name">商品名<span class="partition"></span></td>
-                <td colspan="2"><%= order_item.item_name %></td>
-              </tr>
-              <tr>
-                <td class="td-width title-name">アーティスト名<span class="partition"></span></td>
-                <td colspan="2"><%= order_item.artist_name %></td>
-              </tr>
-              <tr>
-                <td class="td-width title-name">値段<span class="partition"></span></td>
-                <td colspan="2"><span>¥</span><%= order_item.price.to_s(:delimited, delimiter: ',') %></td>
-              </tr>
-              <tr>
-                <td class="td-width title-name">数量<span class="partition"></span></td>
-                <% subtotal = order_item.item_count * order_item.price %>
-                <td colspan="2"><%= order_item.item_count %><span>個</span></td>
-              </tr>
-              <tr>
-                <td class="td-width title-name">小計<span class="partition"></span></td>
-                <td colspan="2"><span>¥</span><%= subtotal.to_s(:delimited, delimiter: ',') %></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <div class="order">
+      <div class="order-info">
+        <label>購入日時</label>
+        <%= order.created_at.strftime('%Y/%m/%d %H:%m') %><br>
+        <label>宛名</label>
+        <%= order.last_name + order.first_name %>
       </div>
-    <% end %>
+
+      <% OrderItem.where(order_id: order.id).each do |order_item| %>
+        <div class="order_item clearfix">
+          <div class="col-xs-6">
+            <%= link_to item_path(order_item) do %>
+              <%= attachment_image_tag order_item, :jacket_image, fallback: "no_image.jpg", size: '200x200', class: "img-rounded" %>
+            <% end %>
+          </div>
+          <div class="col-xs-6">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td class="td-width title-name">商品名<span class="partition"></span></td>
+                  <td colspan="2"><%= order_item.item_name %></td>
+                </tr>
+                <tr>
+                  <td class="td-width title-name">アーティスト名<span class="partition"></span></td>
+                  <td colspan="2"><%= order_item.artist_name %></td>
+                </tr>
+                <tr>
+                  <td class="td-width title-name">値段<span class="partition"></span></td>
+                  <td colspan="2"><span>¥</span><%= order_item.price.to_s(:delimited, delimiter: ',') %></td>
+                </tr>
+                <tr>
+                  <td class="td-width title-name">数量<span class="partition"></span></td>
+                  <% subtotal = order_item.item_count * order_item.price %>
+                  <td colspan="2"><%= order_item.item_count %><span>個</span></td>
+                </tr>
+                <tr>
+                  <td class="td-width title-name">小計<span class="partition"></span></td>
+                  <td colspan="2"><span>¥</span><%= subtotal.to_s(:delimited, delimiter: ',') %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
