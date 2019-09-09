@@ -49,11 +49,12 @@ Rails.application.routes.draw do
     post "/items/genre", to: "items#make_genre", as: "make_genre"
   end
 
+  root 'end_user/items#index'
+
   constraints -> request { request.session[:admin_id].present? } do
     root 'admin/items#index'
   end
 
-  root 'end_user/items#index'
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
