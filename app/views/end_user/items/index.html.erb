@@ -10,8 +10,10 @@
   <div class="item-index col-xs-12">
     <%= render 'layouts/items', items: @items %>
 
-    <div class="favorite_ranking col-xs-12">
-      <%= render '/template/favorite_ranking', all_ranks: @all_ranks %>
-    </div>
+    <% if @all_ranks.present? %>
+      <div class="favorite-ranking col-xs-12">
+        <%= render '/template/favorite_ranking', all_ranks: @all_ranks %>
+      </div>
+    <% end %>
   </div>
 </div>
