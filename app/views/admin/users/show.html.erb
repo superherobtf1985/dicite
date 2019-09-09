@@ -15,13 +15,13 @@
 
     <label>住所(ハイフンなし)</label>
     <div class="field">
-        <%= f.text_field :postal_code, autofocus: true, placeholder: '郵便番号', class: "postal_code" %>
+        <%= f.text_field :postal_code, autofocus: true, placeholder: '郵便番号', class: "postal_code", id:"address_zipcode" %>
     </div>
 
     <div class="field">
-        <%= f.text_field :prefecture, autofocus: true, placeholder: '都道府県', class: "address" %>
-        <%= f.text_field :city, autofocus: true, placeholder: '市町村名', class: "address" %>
-        <%= f.text_field :building, autofocus: true, placeholder: '番地・建物', class: "address" %>
+        <%= f.text_field :prefecture, autofocus: true, placeholder: '都道府県', class: "address", id:"address_prefecture_name" %>
+        <%= f.text_field :city, autofocus: true, placeholder: '市町村名', class: "address", id:"address_city" %>
+        <%= f.text_field :building, autofocus: true, placeholder: '番地・建物', class: "address", id: "address_street" %>
     </div>
 
     <label>電話番号</label>

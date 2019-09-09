@@ -11,7 +11,7 @@
             <%= link_to "商品一覧", items_path %>
           </li>
           <li>
-            <%= link_to "マイページ", user_path(current_user) %>
+            <%= link_to "マイページ", user_path(current_user), data: {"turbolinks" => false}  %>
           </li>
           <li>
             <%= link_to "カート", "/carts", method: :get %>
