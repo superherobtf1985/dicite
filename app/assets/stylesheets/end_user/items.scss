@@ -1,3 +1,19 @@
 // Place all the styles related to the end_user/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.items-wrapper {
+  margin-top: 20px;
+}
+
+.item-block {
+  background-color: #EEEEEE;
+  border-radius: 30px;
+  border: solid 2px;
+  height: 300px;
+  padding-top: 30px;
+}
+
+.favorite-ranking {
+  margin: 30px auto 0 auto;
+}

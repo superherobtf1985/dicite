@@ -1,39 +1,47 @@
-<table class="table table-hover table-inverse">
-  <thead>
-  <tr>
-      <th></th>
-      <th>商品名</th>
-      <th>アーティスト名</th>
-      <th>価格</th>
-      <th>ジャンル</th>
-      <th>レーベル</th>
-      <th>在庫数</th>
-      <th>販売状況</th>
-      <th>いいね</th>
-    </tr>
-  </thead>
+<div class="items-wrapper clearfix">
+  <% items.each do |item| %>
+    <div class="item-block col-xs-4">
+      <%= attachment_image_tag item, :jacket_image, fallback: "no_image.jpg", size: '50x50', class: "img-rounded img-responsive" %>
+      <table class="item-info">
+        <tr>
+          <td>商品名</td>
+          <td>
+            <% if admin_signed_in? %>
+              <%= link_to item.name, admin_item_path(item) %>
+            <% else %>
+              <%= link_to item.name, item_path(item) %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>アーティスト：</td>
+          <td><%= item.artist.name %></td>
+        </tr>
+        <tr>
+          <td>値段：</td>
+          <td><%= item.price %></td>
+        </tr>
+        <tr>
+          <td>ジャンル：</td>
+          <td><%= item.genre.name %></td>
+        </tr>
+        <tr>
+          <td>レーベル：</td>
+          <td><%= item.label.name %></td>
+        </tr>
+        <tr>
+          <td>在庫数：</td>
+          <td><%= item.stock %></td>
+        </tr>
+        <tr>
+          <td>販売状況：</td>
+          <td><%= item.status %></td>
+        </tr>
 
-  <tbody>
-    <% items.each do |item| %>
-      <tr>
-        <td><%= attachment_image_tag item, :jacket_image, fallback: "no_image.jpg", size: '50x50', class: "img-rounded" %></td>
-      <% if admin_signed_in? %>
-        <td><%= link_to item.name, admin_item_path(item) %></td>
-      <% else %>
-        <td><%= link_to item.name, item_path(item) %></td>
-      <% end %>
-        <td><%= item.artist.name %></td>
-        <td><%= item.price %></td>
-        <td><%= item.genre.name %></td>
-        <td><%= item.label.name %></td>
-        <td><%= item.stock %></td>
-        <td><%= item.status %></td>
-        <td>
-          <div id="favorites_buttons_<%= item.id %>">
-            <%= render 'end_user/favorites/favorite', item: item %>
-          </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <div id="favorites_buttons_<%= item.id %>">
+          <%= render 'end_user/favorites/favorite', item: item %>
+        </div>
+      </table>
+    </div>
+  <% end %>
+</div>

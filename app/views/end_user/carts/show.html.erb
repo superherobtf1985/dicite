@@ -11,6 +11,7 @@
       <%= link_to cart.item.name, "/items/#{cart.item.id}" %>
       単価<%= cart.item.price %>円
       <%= cart.count %>個
+      <%= cart.item.status %>
       <%= link_to "削除", cart_path(cart.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger" %>
     </div>
   <% end %>

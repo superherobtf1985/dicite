@@ -1,10 +1,12 @@
 <div class="favorite-ranking">
   <h3 class="ranking-title">いいねランキング</h3>
 
-  <div class="ranking-body">
+  <table class="ranking-body table">
     <% @all_ranks.each.with_index(1) do |item, i| %>
-      <h5>第 <%= i %> 位 <%= link_to item.name, item_path(item.id) %></h5>
-      <p class="ranking-count"><%= item.favorites.count%> いいね</p>
+      <tr>
+        <td>第 <%= i %> 位 <%= link_to item.name, item_path(item.id) %></td>
+        <td><%= item.favorites.count%> いいね</td>
+      </tr>
     <% end %>
-  </div>
+  </table>
 </div>
