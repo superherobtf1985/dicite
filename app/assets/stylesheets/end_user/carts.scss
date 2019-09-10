@@ -1,3 +1,30 @@
 // Place all the styles related to the end_user/carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.cart-wrapper {
+  margin: 20px auto;
+}
+
+.title {
+  text-align: center;
+}
+
+.cart {
+  margin: 20px auto;
+}
+
+.cart-items {
+  border: solid;
+  border-radius: 30px;
+  padding: 20px;
+  background-color: #EEEEEE;
+}
+
+.action {
+  margin-top: 20px;
+}
+
+.prices {
+  text-align: center;
+}
