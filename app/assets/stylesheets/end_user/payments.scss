@@ -10,6 +10,10 @@
 //   text-align: center;
 // }
 
+.title {
+  text-align: center;
+}
+
 .order-form {
   text-align: center;
   border: solid;
@@ -38,4 +42,16 @@
 
 .action {
   margin-top: 20px;
+}
+
+.shipping {
+  border:solid;
+  border-radius: 30px;
+  padding: 20px;
+  text-align: center;
+  background-color: #EEEEEE;
+}
+
+.cart-items {
+  text-align: center;
 }
