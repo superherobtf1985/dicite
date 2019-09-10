@@ -40,7 +40,13 @@
                   </tr>
                   <tr>
                     <td>個数</td>
-                    <td colspan="2"><%= cart.count %><span>個</span></td>
+                    <td colspan="2">
+                      <%= form_for(cart, url: "/carts/#{cart.id}", method: :patch) do |f| %>
+                          <%= f.number_field :count, min: 1 %>
+                          <%# <%= f.hidden_field :item_id, :value => @item.id %><br>
+                          <%= f.submit "個数変更", class: "btn btn-primary glyphicon glyphicon-shopping-cart" %>
+                      <% end %>
+                    </td>
                   </tr>
                   <tr>
                     <td>商品ステータス</td>

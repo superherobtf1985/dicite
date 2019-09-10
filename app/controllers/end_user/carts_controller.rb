@@ -34,6 +34,12 @@ class EndUser::CartsController < ApplicationController
     @carts = Cart.where(user_id: current_user.id)
   end
 
+  def update
+    @cart = Cart.find(params[:id])
+    @cart.update(cart_params)
+    redirect_to "/carts"
+  end
+
   private
   def cart_params
     params.require(:cart).permit(:count, :item_id)
