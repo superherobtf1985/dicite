@@ -36,7 +36,11 @@ class EndUser::CartsController < ApplicationController
 
   def update
     @cart = Cart.find(params[:id])
-    @cart.update(cart_params)
+
+    if @cart.item.stock >= cart_params[:count].to_i
+      @cart.update(cart_params)
+    end
+
     redirect_to "/carts"
   end
 
