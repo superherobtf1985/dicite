@@ -33,7 +33,6 @@ class EndUser::PaymentsController < ApplicationController
   def complete
     shipping = Shipping.find(params[:shipping])
     @carts = Cart.where(user_id: current_user.id)
-
     if are_sale(@carts)
       order = Order.new(
         how_to_pay: params[:order],
@@ -94,7 +93,7 @@ class EndUser::PaymentsController < ApplicationController
   def are_sale(carts)
     carts.each do |cart|
       item = Item.find(cart.item_id)
-      if item.status == 'sold_out'
+      if (item.status == 'sold_out') || (cart.count.to_i > item.stock.to_i)
         return false
       end
     end
