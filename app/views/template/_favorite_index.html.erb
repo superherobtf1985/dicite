@@ -3,7 +3,7 @@
   <% favorites.each do |favorite| %>
     <div class="col-xs-3">
       <%= link_to item_path(favorite.item) do %>
-        <%= attachment_image_tag favorite.item, :jacket_image, fallback: "no_image.jpg", size: '100x100', class: "img-rounded" %>
+        <%= attachment_image_tag favorite.item, :jacket_image, fallback: "/images/no_image.jpg", size: '100x100', class: "img-rounded" %>
       <% end %>
     </div>
     <div class="col-xs-9">
