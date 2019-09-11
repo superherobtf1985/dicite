@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope module: :end_user do
-    resources :users, only: [:show, :update] do
+    resources :users, only: [:show, :update, :destroy] do
       member do
         get :unsubscribe
         post :unsubscribe
