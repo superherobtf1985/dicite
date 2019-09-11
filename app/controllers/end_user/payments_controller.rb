@@ -71,7 +71,6 @@ class EndUser::PaymentsController < ApplicationController
           item.status = "sold_out"
         end
         item.save
-        binding.pry
         order_item.save
         cart_item.destroy
       end
