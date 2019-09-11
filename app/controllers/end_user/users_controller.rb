@@ -21,6 +21,13 @@ class EndUser::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    Favorite.where(user_id: current_user.id).destroy_all
+    Review.where(user_id: current_user.id).destroy_all
+    current_user.destroy
+    redirect_to root_path
+  end
+
   def complete
   end
 
