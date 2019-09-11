@@ -20,7 +20,9 @@ class EndUser::PaymentsController < ApplicationController
 
   def confirm
     @carts = Cart.where(user_id: current_user.id)
-    @order = Order.new(order_params)
+    @order = Order.new
+    @order.how_to_pay = params[:how_to_pay]
+    @order.shipping_id = params[:shipping_id]
     if @order.shipping_id == nil
       render :new
     else
@@ -66,7 +68,6 @@ class EndUser::PaymentsController < ApplicationController
         order_item.save
         cart_item.destroy
       end
-      flash[:notice] = '注文が完了しました'
     else
       flash[:notice] = '売り切れの商品があり、購入できません'
       render :new
@@ -74,9 +75,9 @@ class EndUser::PaymentsController < ApplicationController
   end
 
   private
-  def order_params
-    params.require(:order).permit(:how_to_pay, :shipping_id)
-  end
+  # def order_params
+  #   params.require(:order).permit(:how_to_pay, :shipping_id)
+  # end
 
   def shipping_params
     params.require(:shipping).permit(:first_name, :last_name, :first_kana_name, :last_kana_name, :postal_code, :prefecture, :city, :building, :phone)

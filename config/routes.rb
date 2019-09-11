@@ -31,10 +31,11 @@ Rails.application.routes.draw do
     resources :carts, only: [:create, :destroy]
     resource :carts, only: [:show]
     resource :payments, only: [:new, :create] do
-      post "confirm", on: :member
       post "complete", on: :collection
       post "create_shipping", on: :member
     end
+
+    get "payments/confirm" => "payments#confirm"
   end
 
   namespace :admin do

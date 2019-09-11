@@ -18,7 +18,8 @@
   border: solid;
   border-radius: 30px;
   padding: 20px;
-  background-color: #EEEEEE;
+  // background-color: #EEEEEE;
+  margin: 10px auto;
 }
 
 .action {
@@ -27,4 +28,21 @@
 
 .prices {
   text-align: center;
+}
+
+.shipping {
+  text-align: center;
+  border: solid;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.carts-wrapper {
+  background-color: #EEEEEE;
+  // padding: 30px;
+  border-radius: 30px;
+}
+
+.action {
+  margin: 20px;
 }
