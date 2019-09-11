@@ -1,7 +1,7 @@
 <div class="items-wrapper clearfix">
   <% items.each do |item| %>
     <div class="item-block col-xs-4">
-      <%= attachment_image_tag item, :jacket_image, fallback: "no_image.jpg", size: '50x50', class: "img-rounded img-responsive" %>
+      <%= attachment_image_tag item, :jacket_image, fallback: "/images/no_image.jpg", size: '50x50', class: "img-rounded img-responsive" %>
       <table class="item-info">
         <tr>
           <td>商品名</td>
