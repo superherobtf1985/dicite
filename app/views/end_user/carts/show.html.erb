@@ -1,12 +1,11 @@
 <div class="row cart-wrapper">
-  <div class="title">
-    <h3>商品数<%= @carts.count %>点</h3>
-  </div>
-
   <div class="carts">
     <% if @carts.count >= 1 %>
-      <% sum_price = 0 %>
+      <div class="title">
+        <h3>商品数<%= @carts.count %>点</h3>
+      </div>
 
+      <% sum_price = 0 %>
       <% @carts.each do |cart| %>
         <div class="cart clearfix">
           <% sum_price += (cart.item.price * cart.count) %>
@@ -68,7 +67,9 @@
         ", data: {"turbolinks" => false}  %>
       </div>
     <% else %>
-      <h3>カートに商品はありません</h3>
+      <div class="title">
+        <h3>カートに商品はありません</h3>
+      </div>
     <% end %>
   </div>
 </div>

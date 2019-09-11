@@ -10,6 +10,11 @@
 //   text-align: center;
 // }
 
+.carts-wrapper {
+  padding: 30px;
+  margin-top: 20px;
+}
+
 .title {
   text-align: center;
 }
@@ -42,14 +47,6 @@
 
 .action {
   margin-top: 20px;
-}
-
-.shipping {
-  border:solid;
-  border-radius: 30px;
-  padding: 20px;
-  text-align: center;
-  background-color: #EEEEEE;
 }
 
 .cart-items {
