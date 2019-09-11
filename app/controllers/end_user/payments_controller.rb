@@ -66,6 +66,9 @@ class EndUser::PaymentsController < ApplicationController
         )
         order_item.save
         cart_item.destroy
+        item = Item.find(cart_item.item_id)
+        item.stock -= 1
+        item.save
       end
     else
       flash[:notice] = '売り切れの商品があり、購入できません'
