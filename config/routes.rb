@@ -28,7 +28,7 @@ Rails.application.routes.draw do
         resource :reviews, only: [:create, :destroy]
       end
     end
-    resources :carts, only: [:create, :destroy]
+    resources :carts, only: [:create, :destroy, :update]
     resource :carts, only: [:show]
     resource :payments, only: [:new, :create] do
       post "confirm", on: :member
