@@ -33,7 +33,10 @@ class EndUser::PaymentsController < ApplicationController
   def complete
     shipping = Shipping.find(params[:shipping])
     @carts = Cart.where(user_id: current_user.id)
-    if are_sale(@carts)
+
+    if @carts.blank?
+      redirect_to items_path
+    elsif are_sale(@carts)
       order = Order.new(
         how_to_pay: params[:order],
         delivery_charge: 500,
@@ -48,7 +51,6 @@ class EndUser::PaymentsController < ApplicationController
         last_kana_name: shipping.last_kana_name,
         user_id: current_user.id,
         total_money: calc_total_price(@carts)
-        # shipping_status:
       )
       order.save
 

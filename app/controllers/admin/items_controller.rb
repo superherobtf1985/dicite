@@ -27,6 +27,9 @@ class Admin::ItemsController < ApplicationController
     if @item.save
       redirect_to admin_items_path
     else
+      @artist = Artist.new
+      @label = Label.new
+      @genre = Genre.new
       render :new
     end
   end
@@ -55,6 +58,10 @@ class Admin::ItemsController < ApplicationController
     if @artist.save
       redirect_to new_admin_item_path
     else
+      @item = Item.new
+      @item.cds.build
+      @label = Label.new
+      @genre = Genre.new
       render :new
     end
   end
@@ -64,6 +71,10 @@ class Admin::ItemsController < ApplicationController
     if @label.save
       redirect_to new_admin_item_path
     else
+      @item = Item.new
+      @item.cds.build
+      @artist = Artist.new
+      @genre = Genre.new
       render :new
     end
   end
@@ -73,6 +84,10 @@ class Admin::ItemsController < ApplicationController
     if @genre.save
       redirect_to new_admin_item_path
     else
+      @item = Item.new
+      @item.cds.build
+      @artist = Artist.new
+      @label = Label.new
       render :new
     end
   end

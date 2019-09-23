@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :artist
   belongs_to :genre
   belongs_to :label

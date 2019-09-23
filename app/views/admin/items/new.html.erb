@@ -43,12 +43,14 @@
         <%= f.select :status, Item.statuses.keys.to_a, {} %>
       </div>
 
-      <%= link_to_add_association 'CDを追加', f, :cds, partical: 'items/cd_fields' %>
-
       <%= f.fields_for :cds do |cd| %>
-        <%= render 'cd_fields', f: cd %>
+      <%= render 'cd_fields', f: cd %>
       <% end %>
 
+      <div class="link">
+        <%= link_to_add_association 'CDを追加', f, :cds, partical: 'items/cd_fields' %>
+      </div>
+      
       <div class="actions">
         <%= f.submit "保存", class: 'btn btn-primary'%>
       </div>
