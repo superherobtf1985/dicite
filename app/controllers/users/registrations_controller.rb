@@ -10,9 +10,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+   super
+   shipping = resource.shippings.build(
+     :last_name => params[:user][:last_name],
+     :first_name => params[:user][:first_name],
+     :last_kana_name => params[:user][:last_kana_name],
+     :first_kana_name => params[:user][:first_kana_name],
+     :postal_code => params[:user][:postal_code],
+     :prefecture => params[:user][:prefecture],
+     :city => params[:user][:city],
+     :building => params[:user][:building],
+     :phone => params[:user][:phone],
+   )
+   shipping.save
+  end
 
   # GET /resource/edit
   # def edit

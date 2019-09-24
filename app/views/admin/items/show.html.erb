@@ -1,5 +1,3 @@
-<h3>管理者商品詳細</h3>
-
 <div class="row">
   <%= render 'form', item: @item %>
 
@@ -11,7 +9,7 @@
         <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
       <%= form_for review, url: "/admin/items/#{@item.id}/reviews/#{review.id}" do |f| %>
         <td><%= f.text_field :comment %></td>
-        <td><%= link_to '削除', "/admin/items/#{@item.id}/reviews/#{review.id}", method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger"%></td>
+        <td><%= link_to '削除', "/admin/items/#{@item.id}/reviews/#{review.id}", method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger"%></td>
         <td><%= f.submit %></td>
       <% end %>
       </tr>
