@@ -73,9 +73,6 @@ class EndUser::PaymentsController < ApplicationController
         item.save
         order_item.save
         cart_item.destroy
-        item = Item.find(cart_item.item_id)
-        item.stock -= 1
-        item.save
       end
     else
       flash[:notice] = '在庫が足りないため、購入できません'
