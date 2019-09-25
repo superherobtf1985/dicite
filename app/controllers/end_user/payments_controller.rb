@@ -64,6 +64,13 @@ class EndUser::PaymentsController < ApplicationController
           genre_name: cart_item.item.genre.name,
           label_name: cart_item.item.label.name
         )
+        item = Item.find(cart_item.item.id)
+        item.stock -= cart_item.count
+
+        if item.stock == 0
+          item.status = "sold_out"
+        end
+        item.save
         order_item.save
         cart_item.destroy
         item = Item.find(cart_item.item_id)
@@ -71,7 +78,7 @@ class EndUser::PaymentsController < ApplicationController
         item.save
       end
     else
-      flash[:notice] = '売り切れの商品があり、購入できません'
+      flash[:notice] = '在庫が足りないため、購入できません'
       render :new
     end
   end

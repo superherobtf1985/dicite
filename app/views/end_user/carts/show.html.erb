@@ -12,7 +12,7 @@
 
           <div class="cart-items clearfix">
             <div class="col-xs-6">
-              <%= attachment_image_tag cart.item, :jacket_image, fallback: "no_image.jpg", size: '200x200', class: "img-rounded" %><br>
+              <%= attachment_image_tag cart.item, :jacket_image, fallback: "/images/no_image.jpg", size: '200x200', class: "img-rounded" %><br>
               <div class="action">
                 <%= link_to "削除", cart_path(cart.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-lg btn-danger" %>
               </div>
