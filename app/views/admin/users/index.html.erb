@@ -5,6 +5,7 @@
         <th>ID</th>
         <th>氏名</th>
         <th>カナ</th>
+        <th>状態</th>
         <th>電話番号</th>
         <th>住所</th>
         <th>メールアドレス</th>
@@ -15,8 +16,15 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= user.id %>
+        <% if user.deleted? %>
+          <td><%= user.last_name + user.first_name %></td>
+          <td><%= user.last_kana_name + user.first_kana_name %></td>
+          <td>退会</td>
+        <% else %>
           <td><%= link_to user.last_name + user.first_name, admin_user_path(user.id) , data: {"turbolinks" => false} %></td>
           <td><%= link_to user.last_kana_name + user.first_kana_name, admin_user_path(user), data: {"turbolinks" => false}  %></td>
+          <td>登録</td>
+        <% end %>
           <td><%= user.phone %></td>
           <td><%= user.prefecture + user.city + user.building %></td>
           <td><%= user.email %></td>
@@ -24,5 +32,4 @@
       <% end %>
     </tbody>
   </table>
-
 </div>
