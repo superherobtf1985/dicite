@@ -7,8 +7,8 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @orders = Order.where(params[:id])
-    @favorites = Favorite.where(params[:id])
+    @orders = Order.where(user_id: @user)
+    @favorites = Favorite.where(user_id: @user)
   end
 
   def update
