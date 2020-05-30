@@ -70,7 +70,7 @@ gem "refile-mini_magick"
 gem 'bootstrap-sass', "~>3.4.1"
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
-gem "kaminari", "~>1.1.1"
+gem "kaminari", "~>1.2.1"
 gem 'search_cop'
 gem "cocoon"
 gem "enum_help"
